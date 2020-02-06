@@ -1,0 +1,11 @@
+tensorflow-gpu==1.14.0
+keras
+pandas
+numpy
+opencv-python
+scikit-learn
+matplotlib
+Pillow
+albumentations
+jupyter
+seaborn
