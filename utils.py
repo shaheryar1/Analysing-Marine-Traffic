@@ -9,11 +9,7 @@ from albumentations import (
     IAAAdditiveGaussianNoise, GaussNoise, MotionBlur, MedianBlur, IAAPiecewiseAffine,
     IAASharpen, IAAEmboss, RandomBrightnessContrast, Flip, OneOf, Compose
 )
-
-
-
-DATASET_PATH="/home/shaheryar/Desktop/Projects/Marrine-Vessel-Detection/Dataset/Classification_Data";
-
+from config import DATASET_PATH
 
 
 def loadDataset():
