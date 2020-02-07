@@ -57,7 +57,7 @@ def evaluateOnDataFrame(model,df):
     print("Recall :", recall)
     print("f1 :", f1_ccore)
     print(confusion_mat)
-    plotConfusionMatrix(confusion_mat)
+    # plotConfusionMatrix(confusion_mat)
 
 
 def inferenceImage(model,path):
@@ -75,18 +75,40 @@ def inferenceVideo(model,video_path,save=False):
         print("Error opening video  file")
         return
     i=1;
+    output = "";
+    frame_list=[];
     while (True):
         # Capture frame-by-frame
-        ret, frame = cap.read()
-        # if(i%30==0):
-        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        img = cv2.resize(frame,(224, 224))
-        img_array = image.img_to_array(img)
-        img_array = np.expand_dims(img_array, axis=0)
-        p=model.predict(preprocess_input(img_array))
-        print(CLASSES[np.argmax(p)],p[0][np.argmax(p)])
 
+        ret, frame = cap.read()
+        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        img = cv2.resize(frame, (224, 224))
+        img_array = image.img_to_array(img)
+        img = preprocess_input(img)
+        if(i%30==0):
+            predictions=model.predict_on_batch(np.array(frame_list))
+            predictions=np.argmax(predictions,axis=1)
+            frame_list=[]
+            (values, counts) = np.unique(predictions, return_counts=True)
+            ind = np.argmax(counts)
+            class_index=values[ind]
+            print(class_index)
+            output = str(CLASSES[class_index])
+            # print(CLASSES[np.argmax(p)],p[0][np.argmax(p)])
         i=i+1;
+        if(i%3==0):
+            frame_list.append(img)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        # org
+        org = (50, 50)
+        fontScale = 1
+        # Blue color in BGR
+        color = (255, 0, 0)
+        # Line thickness of 2 px
+        thickness = 2
+        # Using cv2.putText() method
+        frame = cv2.putText(frame, output, org, font,
+                            fontScale, color, thickness, cv2.LINE_AA)
 
         frame = cv2.resize(frame,(0,0),fx=0.75,fy=0.75)
         cv2.imshow('frame', frame)
@@ -148,13 +170,13 @@ def testRandom(model,df,count =16):
 
 if __name__ == '__main__':
     model = buildModel(len(CLASSES))
-    weights_path='/home/ai/Desktop/Python Projects/Vessel_Classification/snapshots2/cp-0010_best_loss.hdf5'
+    weights_path='/home/ai/Desktop/Python Projects/Vessel_Classification/snapshots2/cp-0011_best_acc.hdf5'
     model.load_weights(weights_path)
-    # path = "/home/ai/Desktop/Python Projects/Marrine_Vessel_Detection/Dataset/videos/videos 2/videos 2/Richardson_Bay/IMG_4301.MOV"
-    # inferenceVideo(model,video_path=path)
-
-    df=loadTestDataset()
-    testRandom(model,df)
+    path = "/home/ai/Desktop/Python Projects/Marrine_Vessel_Detection/Dataset/videos/videos 2/videos 2/Alameda_and_Port_Oakland/847A2981.MOV"
+    inferenceVideo(model,video_path=path)
+    #
+    # df=loadTestDataset()
+    # testRandom(model,df)
     # train, val = train_test_split(df, test_size=0.20, random_state=42)
     # test=loadTestDataset()
     # evaluateOnDataFrame(model,test)
