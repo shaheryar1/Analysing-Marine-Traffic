@@ -1,0 +1,5 @@
+classes = 2
+train = /home/simenvg/data/model/train.txt
+valid = /home/simenvg/data/model/test.txt
+names = /work/repos/oceans11/darknet/data/simen.names
+backup = /home/simenvg/data/model/backup/

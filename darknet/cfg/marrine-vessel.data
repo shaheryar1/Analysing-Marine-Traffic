@@ -1,0 +1,5 @@
+classes= 5
+train  = /home/shaheryar/Desktop/Projects/Marrine-Vessel-Detection/Dataset/Annotated_Dataset/All_Classes_Train/train.txt
+valid  =/home/shaheryar/Desktop/Projects/Marrine-Vessel-Detection/Dataset/Annotated_Dataset/All_Classes_Train/validation.txt
+names = data/vessel.names
+backup =backup

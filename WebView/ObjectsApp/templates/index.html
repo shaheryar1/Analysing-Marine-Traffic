@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CRUD App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<style>
+    td {
+        margin: 3px !important;
+    }
+
+    .fr {
+        float: right;
+
+    }
+
+    .upper {
+        margin-bottom: 50px !important;
+    }
+    .error-text{
+        color: red;
+    }
+</style>
+<script> 
+ $(document).ready(function(){    
+    let videoName = $("#video_select").children("option:selected").text();
+    $('#heading').text(videoName+" Results");
+    $("#video_select").on('change', function(){
+       var selected_video = $(this).val();
+    
+       window.location = "/?video_id="+selected_video;
+    });
+ })
+</script>
+<body>
+
+    <div class="container">
+        <div class="row upper">
+            <div class="header">
+                <h3 class="text-muted" id="heading"></h3>
+                <h6 class="error-text">{{context.error_msg}}</h6>
+                <select class="fr" id="video_select">
+                    {% for item in context.videos %}
+                    {% if item.selected %}
+                    <option value={{item.video_id}}  selected>{{item.video_name}}</option>
+                    {% else %}
+                    <option value={{item.video_id}} >{{item.video_name}}</option>
+                    {% endif %}
+
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+
+
+
+            <table class="table table-dark  table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Video ID</th>
+                        <th scope="col">Snapshot</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Confidence</th>
+                        <th scope="col">Dominent Color</th>
+                        <th scope="col">Non-Dominent Color</th>
+                        <th scope="col">Ship Name</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">Span</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in context.results %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.video_id}}</td>
+                        <td> <img alt="Snapshot" src="data:;base64,{{ item.snapshot }}"
+                                style="width:200px;height:150px;" /></td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.confidence}}</td>
+                        <td style="background-color:{{item.upper_color}}"></td>
+                        <td style="background-color:{{item.lower_color}}"></td>
+                        <td>{{item.ship_name}}</td>
+                        <td>{{item.start_time}}</td>
+                        <td>{{item.span}}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

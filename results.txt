@@ -1,0 +1,11 @@
+253 instances of class Tanker with average precision: 0.8594
+184 instances of class Tug with average precision: 0.8966
+362 instances of class Container ship with average precision: 0.7697
+98 instances of class Fishing vessels with average precision: 0.9673
+803 instances of class Passenger ship with average precision: 0.9355
+443 instances of class Sailing vessel with average precision: 0.9536
+494 instances of class Military ship with average precision: 0.9143
+400 instances of class Supply utility vessel with average precision: 0.9903
+398 instances of class Power boat with average precision: 0.9804
+mAP: 0.9186
+
