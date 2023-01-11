@@ -1,23 +1,18 @@
-# REFACTOR
 
-THE CODE WAS NOT CLEANED. I DECIDED TO CLEAN IT
 
-## To run YOLO models
+## Getting Started with Yolo Version
 
-#### CLone the reporsitory using 
-https://github.com/shaheryar1/Football-Monitoring.git
 
 #### Install dependencies using 
 
 Open terminal and browse into oceans11 repo
 
-```cd oceans11```
 
 ```pip3 install -r requirements.txt```
 
 ####  Install darknet/Yolo framework
 
-```cd <path-to-oceans11>/darknet```
+```cd <path-to-repo>/darknet```
 
 ```make```
 
