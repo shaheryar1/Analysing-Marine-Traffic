@@ -2,9 +2,12 @@
 
 ## Overview 
 Building an autonomous vessel in marrine envrionment have so many challenges. One of the challenges is providing the vessel with the vision capabilities so it can analyze the marrine traffic and make different decisions i:e navigation, collision detection etc. This project is initiated to handle this problem. It focuses on following 
-* ### Detect and classify maritime vessels using a vision based system
-* ### Determine the speed of detected vessel 
-* ### Detect name of ship 
+
+**1. Detect and classify maritime vessels using a vision based system**
+
+**2. Determine the speed of detected vessel**
+
+**3. Detect name of ship**
 
 ## Dataset
 The dataset was collected by scraping images from internet. It contains 11 classes.
@@ -22,11 +25,19 @@ The dataset was collected by scraping images from internet. It contains 11 class
 | **Power Boat** |
 | **Jet Ski**
 
-## Approach
-Trained Yolov3, Yolov3-Tiny and RetinaNet
+## Models used for Detection 
+| Model        |    Inference time |  mAP | Issues |
+|--------------|------------------------------------------|----|-----------|
+| **Yolov3**  |  40 ms | 68.7 |high false positive rate |
+| **Yolov3-Tiny**| 10 ms  | 62 | Produces extra detections (high false Negatives)|                                                                                     
+| **RetinaNet** | 100 ms  | 84.3| Slow and need high GPU memory |                                                                                    
 
 
-## Detection Results 
+
+
+## Sample Detection Results 
+
+
 
 
 
