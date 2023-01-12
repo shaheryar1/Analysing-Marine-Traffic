@@ -1,6 +1,7 @@
 
 
-![Main Image](https://github.com/shaheryar1/Vessel_Classification/blob/master/content/Container%20-%20Name02.png)
+![Main](https://github.com/shaheryar1/Vessel_Classification/blob/master/content/Container%20-%20Name02.png)
+
 
 ## Overview 
 Building an autonomous vessel in marrine envrionment have so many challenges. One of the challenges is providing the vessel with the vision capabilities so it can analyze the marrine traffic and make different decisions i:e navigation, collision detection etc. This project is initiated to handle this problem. It focuses on following 
