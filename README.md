@@ -1,11 +1,13 @@
 
 
+![Main Image](https://github.com/shaheryar1/Vessel_Classification/blob/master/content/Container%20-%20Name02.png)
+
 ## Overview 
 Building an autonomous vessel in marrine envrionment have so many challenges. One of the challenges is providing the vessel with the vision capabilities so it can analyze the marrine traffic and make different decisions i:e navigation, collision detection etc. This project is initiated to handle this problem. It focuses on following 
 
 **1. Detect and classify maritime vessels using a vision based system**
 
-**2. Determine the speed of detected vessel**
+**2. Determine the hull color**
 
 **3. Detect name of ship**
 
@@ -36,8 +38,15 @@ The dataset was collected by scraping images from internet. It contains 11 class
 
 
 ## Sample Detection Results 
+![All results](./content/All.png)
 
 
+## Name Extration Results
+![Name](./content/Container%20-%20Name.png)
+
+## Color Extraction
+
+![Color Extraction](./content/UI.png)
 
 
 
